@@ -14,16 +14,16 @@ export default async function eventMonitorStatus(
     name: 'event-monitor',
     status: State.Outage,
     response: 500,
-    url: 'https://v4.aquarius.oceanprotocol.com/'
+    url: 'https://v4-2.aquarius.oceanprotocol.com/'
   }
   try {
-    const response = await fetch('https://v4.aquarius.oceanprotocol.com/')
+    const response = await fetch('https://v4-2.aquarius.oceanprotocol.com/')
     status.response = response.status
     status.version = (await response.json()).version
     status.latestRelease = latestRelease
 
     const chainStatus = await fetch(
-      `https://v4.aquarius.oceanprotocol.com/api/aquarius/chains/status/${network.chainId}`
+      `https://v4-2.aquarius.oceanprotocol.com/api/aquarius/chains/status/${network.chainId}`
     )
     const chainStatusData = await chainStatus.json()
 

@@ -4,7 +4,7 @@ import { getVersionMissmatchError } from '../utils/messages'
 
 async function aquariusQuery(): Promise<boolean> {
   const response = await fetch(
-    `https://v4.aquarius.oceanprotocol.com/api/aquarius/assets/query`,
+    `https://v4-2.aquarius.oceanprotocol.com/api/aquarius/assets/query`,
     {
       method: 'post',
       headers: { 'Content-Type': 'application/json' },
@@ -47,16 +47,16 @@ export default async function aquariusStatus(
     name: 'aquarius',
     status: State.Outage,
     response: 500,
-    url: 'https://v4.aquarius.oceanprotocol.com/'
+    url: 'https://v4-2.aquarius.oceanprotocol.com/'
   }
   try {
-    const response = await fetch('https://v4.aquarius.oceanprotocol.com/')
+    const response = await fetch('https://v4-2.aquarius.oceanprotocol.com/')
     status.response = response.status
     status.version = (await response.json()).version
     status.latestRelease = latestRelease
 
     const chainResponse = await fetch(
-      'https://v4.aquarius.oceanprotocol.com/api/aquarius/chains/list'
+      'https://v4-2.aquarius.oceanprotocol.com/api/aquarius/chains/list'
     )
     const requiredNetworks = networks.map((x) => x.chainId)
     const responseNetworks = await chainResponse.json()
